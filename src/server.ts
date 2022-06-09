@@ -12,16 +12,16 @@ import { Client } from "pg"
 import joinMonster from "join-monster"
 import cors from "cors"
 
+dotenv.config({ path: ".env.development" })
+
 const client = new Client({
-  host: "social-media-db.ch12zfzjvjov.us-east-1.rds.amazonaws.com",
-  user: "tyler",
-  password: "ASDFlkjh11!!",
-  database: "socialMediaDB",
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 })
 
 client.connect()
-
-dotenv.config({ path: ".env.development" })
 
 const app = express()
 const port = process.env.SERVER_PORT || 3000
